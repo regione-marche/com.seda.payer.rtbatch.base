@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.seda.payer.rtbatch.base</groupId>
+	<artifactId>com.seda.payer.rtbatch.base</artifactId>
+	<version>1.0</version>
+	<name>com.seda.payer.rtbatch.base</name>
+	<description>com.seda.payer.rtbatch.base</description>
+	
+	 <parent>
+      <groupId>it.maggioli.informatica.base.pom</groupId>
+      <artifactId>pagonet-base</artifactId>
+      <version>1.0</version>
+   </parent>
+	
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.seda.payer.rtbatch</groupId>
+			<artifactId>com.seda.payer.rtbatch</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+			<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.14</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+</project>

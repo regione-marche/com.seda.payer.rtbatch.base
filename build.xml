@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="com.seda.payer.rtbatch.base" default="make.jar" basedir=".">
+
+	<property file="build.properties" />
+
+	<fileset id="compile.classpath" dir="${dir.lib}">
+		<include name="*.jar" />
+	</fileset>
+
+
+
+	<!-- ================================= 
+          target: init              
+         ================================= -->
+	<target name="init" description="pulisce la directory di build e ne ricrea la struttura base">
+		<mkdir dir="${dir.build}" />
+		<delete includeemptydirs="yes">
+			<fileset dir="${dir.build}">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+		<mkdir dir="${dir.classes}" />
+	</target>
+
+	
+
+	<!-- ================================= 
+          target: compile              
+         ================================= -->
+	<target name="compile" depends="init" description="compilazione dei file sorgente">
+		<javac destdir="${dir.classes}" debug="true" debuglevel="lines,vars,source" optimize="true" source="1.6" target="1.6" includeantruntime="false">
+			<src path="${dir.src}">
+			</src>
+			<classpath>
+				<fileset refid="compile.classpath" />
+			</classpath>
+		</javac>
+	</target>
+
+
+	
+	<!-- ================================= 
+          target: make.jar              
+         ================================= -->
+	<target name="make.jar" depends="compile" description="crea un archivio jar">
+		<copy todir="${dir.build}/lib">
+			<fileset dir="${dir.lib}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.classes}">
+			<fileset dir="${dir.src}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<jar destfile="${dir.build}/${ant.project.name}.jar">
+			<fileset dir="${dir.classes}" />
+		</jar>
+	</target>
+
+</project>
